@@ -2,6 +2,7 @@ import { getRoom } from '@/data-access/rooms'
 import { GithubIcon } from 'lucide-react'
 import Link from 'next/link.js'
 import { TagsList, splitTags } from '@/components/tags-list'
+import { DevFinderVideo } from './video-player'
 
 export default async function RoomPage(props: { params: { roomId: string } }) {
   const roomId = props.params.roomId
@@ -16,6 +17,7 @@ export default async function RoomPage(props: { params: { roomId: string } }) {
       <div className='col-span-3 p-4 pl-2'>
         <div className='rounded-lg border bg-card text-card-foreground shadow-sm" p-4'>
           VIDEO PLAYER
+          <DevFinderVideo room={room} />
         </div>
       </div>
       <div className='col-span-1 p-4 pl-2'>
