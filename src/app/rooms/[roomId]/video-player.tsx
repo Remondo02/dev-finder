@@ -13,10 +13,9 @@ import {
 } from '@stream-io/video-react-sdk'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { generateTokenAction } from './actions'
 
 const apiKey = process.env.NEXT_PUBLIC_GET_STREAM_API_KEY!
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiM2QzOTcxMWEtZTE1Mi00ZWMwLThhMGYtN2QyNDRiYjE5YWM3In0.2I35qNl4Cz_sOOjkTLzeqIek307o6MTDNoSprkVNc9o'
 
 export function DevFinderVideo({ room }: { room: Room }) {
   const session = useSession()
@@ -34,7 +33,7 @@ export function DevFinderVideo({ room }: { room: Room }) {
     const client = new StreamVideoClient({
       apiKey,
       user: { id: userId },
-      token,
+      tokenProvider: () => generateTokenAction(),
     })
     setClient(client)
     const call = client.call('default', room.id)
