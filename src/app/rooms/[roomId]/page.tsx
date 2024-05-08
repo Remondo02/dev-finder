@@ -1,7 +1,7 @@
 import { getRoom } from '@/data-access/rooms'
 import { GithubIcon } from 'lucide-react'
 import Link from 'next/link.js'
-import { Badge } from '@/components/ui/badge'
+import { TagsList, splitTags } from '@/components/tags-list'
 
 export default async function RoomPage(props: { params: { roomId: string } }) {
   const roomId = props.params.roomId
@@ -10,8 +10,6 @@ export default async function RoomPage(props: { params: { roomId: string } }) {
   if (!room) {
     return <div>No room of this ID found</div>
   }
-
-  const tags = room.tags.split(',').map((tag) => tag.trim())
 
   return (
     <div className='grid grid-cols-4 min-h-screen'>
@@ -37,13 +35,7 @@ export default async function RoomPage(props: { params: { roomId: string } }) {
             </Link>
           )}
           <p className='text-base text-muted-foreground'>{room?.description}</p>
-          <div className='flex gap-2 flex-wrap'>
-            {tags.map((lang) => (
-              <Badge key={lang} className='w-fit'>
-                {lang}
-              </Badge>
-            ))}
-          </div>
+          <TagsList tags={splitTags(room.tags)} />
         </div>
       </div>
     </div>
