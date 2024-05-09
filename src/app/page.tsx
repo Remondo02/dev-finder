@@ -2,7 +2,8 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link.js'
 import { getRooms } from '@/data-access/rooms'
 import { SearchBar } from './search-bar'
-import { RoomCard } from '@/components/room-card'
+import { RoomCard } from './room-card'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export default async function Home({
   searchParams,
@@ -11,6 +12,7 @@ export default async function Home({
     search: string
   }
 }) {
+  noStore()
   const rooms = await getRooms(searchParams.search)
 
   return (
