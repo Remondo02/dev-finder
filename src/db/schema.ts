@@ -9,11 +9,6 @@ import {
 import type { AdapterAccount } from '@auth/core/adapters'
 import { sql } from 'drizzle-orm'
 
-export const testing = pgTable('testing', {
-  id: text('id').notNull().primaryKey(),
-  name: text('name'),
-})
-
 export const users = pgTable('user', {
   id: text('id').notNull().primaryKey(),
   name: text('name'),
@@ -28,7 +23,7 @@ export const accounts = pgTable(
     userId: text('userId')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    type: text('type').notNull(),
+    type: text('type').$type<AdapterAccount["type"]>().notNull(),
     provider: text('provider').notNull(),
     providerAccountId: text('providerAccountId').notNull(),
     refresh_token: text('refresh_token'),
