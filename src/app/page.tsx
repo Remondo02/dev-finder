@@ -1,5 +1,5 @@
-import Image from 'next/image.js'
-import Link from 'next/link.js'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function LandingPage() {
   return (

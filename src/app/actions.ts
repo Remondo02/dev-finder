@@ -2,7 +2,6 @@
 
 import { deleteUser } from '@/data-access/users'
 import { getSession } from '@/lib/auth'
-import { redirect } from 'next/navigation'
 
 export async function deleteAccountAction() {
   const session = await getSession()

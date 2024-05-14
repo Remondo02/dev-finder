@@ -1,6 +1,6 @@
 import { getRoom } from '@/data-access/rooms'
 import { GithubIcon } from 'lucide-react'
-import Link from 'next/link.js'
+import Link from 'next/link'
 import { TagsList } from '@/components/tags-list'
 import { DevFinderVideo } from './video-player'
 import { splitTags } from '@/lib/utils'

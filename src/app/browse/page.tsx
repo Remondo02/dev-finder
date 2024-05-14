@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button'
-import Link from 'next/link.js'
+import Link from 'next/link'
 import { getRooms } from '@/data-access/rooms'
 import { SearchBar } from './search-bar'
 import { RoomCard } from './room-card'
 import { unstable_noStore as noStore } from 'next/cache'
-import Image from 'next/image.js'
+import Image from 'next/image'
 
 export default async function Home({
   searchParams,

@@ -15,7 +15,7 @@ import {
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import { generateTokenAction } from './actions'
-import { useRouter } from 'next/navigation.js'
+import { useRouter } from 'next/navigation'
 
 const apiKey = process.env.NEXT_PUBLIC_GET_STREAM_API_KEY!
 

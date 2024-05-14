@@ -11,8 +11,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { DeleteIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import Image from 'next/image.js'
-import Link from 'next/link.js'
+import Image from 'next/image'
+import Link from 'next/link'
 import { DropdownMenuSeparator } from '@radix-ui/react-dropdown-menu'
 import {
   AlertDialog,
@@ -26,7 +26,6 @@ import {
 } from '@/components/ui/alert-dialog'
 import { useState } from 'react'
 import { deleteAccountAction } from './actions'
-import Router from 'next/router'
 
 function AccountDropdown() {
   const session = useSession()
