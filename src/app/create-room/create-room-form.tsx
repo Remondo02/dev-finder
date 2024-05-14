@@ -1,8 +1,5 @@
 'use client'
 
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -14,9 +11,13 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { createRoomAction } from './actions'
-import { useRouter } from 'next/navigation'
 import { toast } from '@/components/ui/use-toast'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { createRoomAction } from './actions'
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -48,15 +49,15 @@ export function CreateRoomForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name='name'
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} placeholder='Dev Finder is awesome' />
+                <Input {...field} placeholder="Dev Finder is awesome" />
               </FormControl>
               <FormDescription>This is your public room name.</FormDescription>
               <FormMessage />
@@ -65,7 +66,7 @@ export function CreateRoomForm() {
         />
         <FormField
           control={form.control}
-          name='description'
+          name="description"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Description</FormLabel>
@@ -84,14 +85,14 @@ export function CreateRoomForm() {
         />
         <FormField
           control={form.control}
-          name='githubRepo'
+          name="githubRepo"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Github Repo</FormLabel>
               <FormControl>
                 <Input
                   {...field}
-                  placeholder='https://github.com/Remondo02/modern-portfolio'
+                  placeholder="https://github.com/Remondo02/modern-portfolio"
                 />
               </FormControl>
               <FormDescription>
@@ -103,12 +104,12 @@ export function CreateRoomForm() {
         />
         <FormField
           control={form.control}
-          name='tags'
+          name="tags"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Tags</FormLabel>
               <FormControl>
-                <Input {...field} placeholder='typescript, nextjs, tailwind' />
+                <Input {...field} placeholder="typescript, nextjs, tailwind" />
               </FormControl>
               <FormDescription>
                 List your programming languages, frameworks, libraries so people
@@ -118,7 +119,7 @@ export function CreateRoomForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   )

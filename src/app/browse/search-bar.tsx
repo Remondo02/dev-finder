@@ -1,8 +1,5 @@
 'use client'
 
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -12,9 +9,12 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { SearchIcon } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const formSchema = z.object({
   search: z.string().min(0).max(50),
@@ -46,17 +46,17 @@ export function SearchBar() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='flex gap-2'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
         <FormField
           control={form.control}
-          name='search'
+          name="search"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <Input
                   {...field}
-                  className='w-[400px]'
-                  placeholder='Filter rooms by keywords, such as typescript, next.js'
+                  className="w-[400px]"
+                  placeholder="Filter rooms by keywords, such as typescript, next.js"
                 />
               </FormControl>
               <FormMessage />
@@ -64,14 +64,14 @@ export function SearchBar() {
           )}
         />
 
-        <Button type='submit'>
-          <SearchIcon className='mr-2' />
+        <Button type="submit">
+          <SearchIcon className="mr-2" />
           Search
         </Button>
 
         {query.get('search') && (
           <Button
-            variant='outline'
+            variant="outline"
             onClick={() => {
               form.setValue('search', '')
               router.push('/')

@@ -1,6 +1,5 @@
 'use client'
 
-import '@stream-io/video-react-sdk/dist/css/styles.css'
 import { Room } from '@/db/schema'
 import {
   Call,
@@ -12,10 +11,12 @@ import {
   StreamVideo,
   StreamVideoClient,
 } from '@stream-io/video-react-sdk'
+import '@stream-io/video-react-sdk/dist/css/styles.css'
 import { useSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
-import { generateTokenAction } from './actions'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+import { generateTokenAction } from './actions'
 
 const apiKey = process.env.NEXT_PUBLIC_GET_STREAM_API_KEY!
 

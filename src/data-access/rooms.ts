@@ -1,7 +1,7 @@
 import { db } from '@/db'
 import { Room, room } from '@/db/schema'
-import { eq, like } from 'drizzle-orm'
 import { getSession } from '@/lib/auth'
+import { eq, like } from 'drizzle-orm'
 
 export async function getRooms(search: string | undefined) {
   const where = search ? like(room.tags, `%${search}%`) : undefined
@@ -34,7 +34,7 @@ export async function deleteRoom(roomId: string) {
 
 export async function createRoom(
   roomData: Omit<Room, 'id' | 'userId'>,
-  userId: string
+  userId: string,
 ) {
   const inserted = await db
     .insert(room)
