@@ -20,7 +20,6 @@ export default async function RoomPage(props: { params: { roomId: string } }) {
     <div className="grid min-h-screen grid-cols-4">
       <div className="col-span-3 p-4 pl-2">
         <div className='shadow-sm" rounded-lg border bg-card p-4 text-card-foreground'>
-          VIDEO PLAYER
           <DevFinderVideo room={room} />
         </div>
       </div>
